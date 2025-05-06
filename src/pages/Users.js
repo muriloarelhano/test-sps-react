@@ -84,7 +84,7 @@ function Users() {
 	};
 
 	return (
-		<Container size="lg" py="xl">
+		<Container size="lg" py="lg">
 			<Paper shadow="xs" p="md" withBorder>
 				<Group justify="space-between" mb="md">
 					<Title order={2}>Usuários</Title>

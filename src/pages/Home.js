@@ -1,21 +1,15 @@
 import {
-	Box,
-	Button,
 	Container,
-	Flex,
 	Group,
 	Paper,
 	SimpleGrid,
 	Text,
 	ThemeIcon,
-	Title,
 	rem,
 } from "@mantine/core";
-import { LogOut, UserPlus, Users } from "lucide-react";
+import { UserPlus, Users } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { UserTypeBadge } from "../components/UserTypeBadge";
 
 const features = [
 	{
@@ -33,35 +27,8 @@ const features = [
 ];
 
 function Home() {
-	const { currentUser, logout } = useAuth();
-
 	return (
-		<Container size="lg" py="xl">
-			<Paper shadow="sm" p="md" withBorder mb="lg">
-				<Group justify="space-between" align="center">
-					<div>
-						<Title order={2}>SPS REACT TEST</Title>
-						{currentUser && (
-							<Flex gap={"xs"} align="center">
-								<Text size="sm" c="dimmed">
-									Bem-vindo, {currentUser.name || currentUser.email}
-								</Text>
-								<UserTypeBadge />
-							</Flex>
-						)}
-					</div>
-
-					<Button
-						color="red"
-						variant="light"
-						onClick={logout}
-						leftSection={<LogOut size={16} />}
-					>
-						Sair
-					</Button>
-				</Group>
-			</Paper>
-
+		<Container size="lg" py="lg">
 			<SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
 				{features.map((feature) => (
 					<Paper

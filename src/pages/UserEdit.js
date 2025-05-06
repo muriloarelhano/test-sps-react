@@ -103,7 +103,7 @@ function UserEdit() {
 	};
 
 	return (
-		<Container size="md" py="xl">
+		<Container size="md" py="lg">
 			<Paper shadow="xs" p="md" pos="relative" withBorder>
 				<LoadingOverlay visible={loading} overlayProps={{ blur: 2 }} />
 
