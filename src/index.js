@@ -7,6 +7,9 @@ import { RouterProvider } from "react-router-dom";
 import { MantineProvider, createTheme } from "@mantine/core";
 import router from "./routes";
 import { Notifications } from "@mantine/notifications";
+import { setupAxiosInterceptors } from "./utils/axiosInterceptors";
+
+setupAxiosInterceptors();
 
 const theme = createTheme({
 	primaryColor: "blue",
