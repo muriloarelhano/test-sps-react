@@ -15,9 +15,10 @@ import { AlertCircle, PenSquare, PlusCircle, Trash2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoBackButton from "../components/GoBackButton";
+import { useApiErrors } from "../hooks/useApiErrors";
 import { userService } from "../services/UserService";
 import { getUserTypeLabel } from "../utils/utils";
-import { useApiErrors } from "../hooks/useApiErrors";
+import { notifications } from "@mantine/notifications";
 
 function Users() {
 	const [users, setUsers] = useState([]);
@@ -60,12 +61,24 @@ function Users() {
 			setUsers(users.filter((user) => user.id !== userToDelete.id));
 			setDeleteModalOpen(false);
 			setUserToDelete(null);
+
+			notifications.show({
+				message: "Usuário excluído com sucesso.",
+				color: "green",
+				autoClose: 3000,
+			});
 		} catch (error) {
 			console.error("Error deleting user:", error);
 			setApiError(
 				error.response?.data?.message || "Falha ao excluir o usuário.",
 				error,
 			);
+
+			notifications.show({
+				message: "Erro ao excluir o usuário.",
+				color: "red",
+				autoClose: 3000,
+			});
 		}
 		setDeleteModalOpen(false);
 	};

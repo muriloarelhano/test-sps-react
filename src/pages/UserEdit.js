@@ -19,6 +19,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useApiErrors } from "../hooks/useApiErrors";
 import { userService } from "../services/UserService";
 import { mapErrorsToString } from "../utils/utils";
+import { notifications } from "@mantine/notifications";
 
 function UserEdit() {
 	const { userId } = useParams();
@@ -80,6 +81,12 @@ function UserEdit() {
 			} else {
 				await userService.update(userId, data);
 			}
+
+			notifications.show({
+				message: "Usuário salvo com sucesso!",
+				color: "green",
+				autoClose: 2000,
+			});
 
 			navigate("/users");
 		} catch (error) {
