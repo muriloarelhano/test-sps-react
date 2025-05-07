@@ -10,11 +10,9 @@ export const AuthProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
-		// Check authentication status on initial load
 		const user = authService.getCurrentUser();
 		const isAuth = authService.isAuthenticated();
 		
-		// Only set the current user if we have both user data and a valid token
 		if (user && isAuth) {
 			setCurrentUser(user);
 		}
